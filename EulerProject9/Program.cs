@@ -29,4 +29,8 @@ namespace EulerProject9
             }
         }
     }
+    class Euler1
+    {
+
+    }
 }

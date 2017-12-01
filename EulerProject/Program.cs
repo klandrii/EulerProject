@@ -1,25 +1,55 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace EulerProject
 {
     
     class Program
     {
-        [STAThread]
         static void Main(string[] args)
         {
-            //Bruteforce solution, ill try checking all ints from 1 to 1000 for being multiples of 3 and 5
-            int result = 0;
+            var instance1= new Euler1();
+            var instance2 = new Euler9();
+            Console.WriteLine(instance1.Answer());
+            Console.WriteLine(instance2.Answer());
+        }
+    }
+    class Euler1
+    {
+        private int result = 0;
+        public string Answer()
+        {
             for (int i = 1; i < 1000; i++)
             {
                 if (((i % 3) == 0) || ((i % 5) == 0))
                 {
-                    result += i;// sum of all multiples
+                    result += i;
                 }
             }
-            Console.WriteLine(result);
-            Clipboard.SetText(Convert.ToString(result));// now ill copy our result to clipboard, for for convenience sake
+            return Convert.ToString(result);
+        }
+    }
+    class Euler9
+    {
+        private int sum = 1000;
+        private string wrong = "wrong";
+
+        public string Answer()
+        {
+            for (int a = 1; a < sum / 3; a++)
+            {
+                for (int b = a; b < sum/2; b++)
+                {
+                    int c = sum - (a + b);
+                    if (a*a + b*b == c*c)
+                    {
+                        int result = a * b * c;
+                        return Convert.ToString(result);
+                    }
+                }
+                
+            }
+
+            return wrong;
         }
     }
 }
