@@ -9,8 +9,8 @@ namespace EulerProject
         {
             var instance1= new Euler1();
             var instance2 = new Euler9();
-            Console.WriteLine(instance1.Answer());
-            Console.WriteLine(instance2.Answer());
+            Console.WriteLine("Problem #1 : {0}",instance1.Answer());
+            Console.WriteLine("Problem #2 : {0}",instance2.Answer());
         }
     }
     class Euler1
