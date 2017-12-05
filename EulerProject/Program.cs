@@ -8,84 +8,116 @@ namespace EulerProject
     {
         private static void Main(string[] args)
         {
-            var instance1 = new Euler1();
-            var instance2 = new Euler9();
-            var instance3 = new Euler10();
+            var instance1 = new EulerProblems.Euler1();
+            var instance2 = new EulerProblems.Euler9();
+            var instance3 = new EulerProblems.Euler10();
+            var instance4 = new InterwiewQuestions.MostFrequentArray();
             Console.WriteLine("Problem #1 : {0}", instance1.Answer());
             Console.WriteLine("Problem #9 : {0}", instance2.Answer());
             Console.WriteLine("Problem #10 : {0}", instance3.Answer());
+            Console.WriteLine("Problem #1 : {0}", instance4.Answer());
         }
     }
 
-    internal class Euler1
+    namespace EulerProblems
     {
-        private int result = 0;
-
-        public string Answer()
+        internal class Euler1
         {
-            for (int i = 1; i < 1000; i++)
-            {
-                if (((i % 3) == 0) || ((i % 5) == 0))
-                {
-                    result += i;
-                }
-            }
-            return Convert.ToString(result);
-        }
-    }
+            private int result = 0;
 
-    internal class Euler9
-    {
-        private int sum = 1000;
-        private string wrong = "wrong";
-
-        public string Answer()
-        {
-            for (int a = 1; a < sum / 3; a++)
+            public string Answer()
             {
-                for (int b = a; b < sum / 2; b++)
+                for (int i = 1; i < 1000; i++)
                 {
-                    int c = sum - (a + b);
-                    if (a * a + b * b == c * c)
+                    if (((i % 3) == 0) || ((i % 5) == 0))
                     {
-                        int result = a * b * c;
-                        return Convert.ToString(result);
+                        result += i;
                     }
                 }
+                return Convert.ToString(result);
             }
+        }
 
-            return wrong;
+        internal class Euler9
+        {
+            private int sum = 1000;
+            private string wrong = "wrong";
+
+            public string Answer()
+            {
+                for (int a = 1; a < sum / 3; a++)
+                {
+                    for (int b = a; b < sum / 2; b++)
+                    {
+                        int c = sum - (a + b);
+                        if (a * a + b * b == c * c)
+                        {
+                            int result = a * b * c;
+                            return Convert.ToString(result);
+                        }
+                    }
+                }
+
+                return wrong;
+            }
+        }
+
+        internal class Euler10
+        {
+            //Find sum for all primes bellow two million
+            private bool[] sieve = new bool[2000000];
+
+            private List<double> primes = new List<double>();
+
+            public string Answer()
+            {
+                for (int i = 2; i < sieve.Length; i++)
+                {
+                    sieve[i] = true;
+                }
+                for (int i = 2; Math.Pow(i, 2) < sieve.Length; i++)  // removing all multiples of 2
+                {
+                    for (int j = (int)Math.Pow(i, 2); j < sieve.Length; j += i)//all multiples of >2 are not primes
+                    {
+                        sieve[j] = false;
+                    }
+                }
+                for (int i = 2; i < sieve.Length; i++)
+                {
+                    if (sieve[i])
+                    {
+                        primes.Add(i);
+                    }
+                }
+                string result = primes.Sum().ToString();
+                return result;
+            }
         }
     }
 
-    internal class Euler10
+    namespace InterwiewQuestions
     {
-        //Find sum for all primes bellow two million
-        int n = 1000000;
-        bool[] sieve = new bool[2000000];
-        List<double> primes = new List<double>();
-        public string Answer()
+        internal class MostFrequentArray //Return most frequent number in array
         {
-            for (int i = 2; i < sieve.Length; i++)
+            private int[] myArray = { 1, 2, 2, 3, 4, 4, 2, 1 };// array sample
+            public Dictionary<int, int> countDictionary = new Dictionary<int, int>();//Key is Item Value is quantity of that item
+
+            public string Answer()
             {
-                sieve[i] = true;
-            }
-            for (int i = 2; Math.Pow(i,2)< sieve.Length; i++)  // removing all multiples of 2 
-            {
-                for (int j = (int)Math.Pow(i,2); j < sieve.Length; j+=i)//all multiples of >2 are not primes
+                for (int i = 0; i < myArray.Length; i++)
                 {
-                    sieve[j] = false;
+                    if (countDictionary.ContainsKey(myArray[i]))//checking if dictionary already contains element from myArray
+                    {
+                        countDictionary[i]++;//increasing value by 1
+                    }
+                    else
+                    {
+                        countDictionary.Add(i, 1);// adding value/key pair to dictionary 
+                    }
                 }
+
+                return Convert.ToString(countDictionary);
             }
-            for (int i = 2; i < sieve.Length; i++)
-            {
-                if (sieve[i])
-                {
-                    primes.Add(i);
-                }
-            }
-            string result = primes.Sum().ToString();
-            return result;
         }
     }
 }
