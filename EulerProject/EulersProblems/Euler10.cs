@@ -5,8 +5,9 @@ using System.Linq;
 namespace EulerProblems
 {
     internal class Euler10
-    {
+    {   //-------------------------------------------
         //Find sum for all primes bellow two million
+        //-------------------------------------------
         private bool[] sieve = new bool[2000000];
 
         private List<double> primes = new List<double>();

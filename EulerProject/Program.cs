@@ -6,14 +6,19 @@ namespace EulerProject
     {
         private static void Main(string[] args)
         {
+            Logger.InitLogger();// Logger Initialization 
+            Logger.Log.Info("Staring log");
             var instance1 = new EulerProblems.Euler1();
             var instance2 = new EulerProblems.Euler9();
             var instance3 = new EulerProblems.Euler10();
             var instance4 = new InterwiewQuestions.MostFrequentArray();
-            Console.WriteLine("Problem #1 : {0}", instance1.Answer());
-            Console.WriteLine("Problem #9 : {0}", instance2.Answer());
-            Console.WriteLine("Problem #10 : {0}", instance3.Answer());
-            Console.WriteLine("Problem #1 : {0}", instance4.Answer());
+            var instance5 = new EulerProblems.Euler11();
+            Console.WriteLine("Euler problem #1 : {0}", instance1.Answer());
+            Console.WriteLine("Euler problem #9 : {0}", instance2.Answer());
+            Console.WriteLine("Euler problem #10 : {0}", instance3.Answer());
+            Console.WriteLine("Interview problem #1 : {0}", instance4.Answer());
+            Console.WriteLine("Euler problem#11: {0}",instance5.Answer());
+            Console.ReadLine();
         }
     }
 

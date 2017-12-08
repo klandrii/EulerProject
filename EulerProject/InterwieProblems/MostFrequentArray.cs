@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using EulerProject;
 
 namespace InterwiewQuestions
 {
@@ -12,6 +13,7 @@ namespace InterwiewQuestions
 
         public string Answer()
         {
+            Logger.Log.Info("Finding most frequent member of the array");
             foreach (int item in myArray)
             {
                 if (CountDictionary.ContainsKey(myArray[item]))//checking if dictionary already contains element from myArray
@@ -23,8 +25,8 @@ namespace InterwiewQuestions
                     CountDictionary.Add(item, 1);// adding value/key pair to dictionary 
                 }
             }
-            var max = from x in CountDictionary where x.Value == CountDictionary.Max(v => v.Value) select x.Key;//not working as intended yet
-            string result = max.GetEnumerator().ToString();
+            var max = CountDictionary.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;//Aggregate loops over every element of the dictionary and applies comparison function and returns the biggest element
+            string result = max.ToString();
             return result;
         }
     }
