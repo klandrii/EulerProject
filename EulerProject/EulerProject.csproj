@@ -50,13 +50,16 @@
     <Compile Include="EulersProblems\Euler10.cs" />
     <Compile Include="EulersProblems\Euler11.cs" />
     <Compile Include="EulersProblems\Euler9.cs" />
+    <Compile Include="InterwieProblems\CommonElements.cs" />
     <Compile Include="InterwieProblems\MostFrequentArray.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
