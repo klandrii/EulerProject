@@ -49,6 +49,7 @@
     <Compile Include="EulersProblems\Euler1.cs" />
     <Compile Include="EulersProblems\Euler10.cs" />
     <Compile Include="EulersProblems\Euler11.cs" />
+    <Compile Include="EulersProblems\Euler14.cs" />
     <Compile Include="EulersProblems\Euler9.cs" />
     <Compile Include="InterwieProblems\CommonElements.cs" />
     <Compile Include="InterwieProblems\MostFrequentArray.cs" />
